@@ -61,7 +61,7 @@ const logoutUser = async (req, res, next) => {
 
     await blacklistTokenModel.create({ token })
 
-    res.status(200).json({ msg: "LOGGED OUT" })
+    res.status(200).json({ msg: "LOGGED OUT SUCCESSFULLY" })
 }
 
 const getUserProfile = async (req, res, next) => {
