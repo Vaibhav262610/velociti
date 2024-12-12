@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { UserDataContext } from '../context/UserContext'
+import UserLogo from '../components/UserLogo'
 
 const UserRegister = () => {
 
@@ -51,7 +52,7 @@ const UserRegister = () => {
                 <div className='p-7 w-full bg-gray-100 sm:rounded-lg sm:p-20 sm:w-4/12 flex flex-col sm:h-auto h-screen sm:gap-20 justify-between '>
                     <div>
                         <Link to={'/'}>
-                            <h1 className='mb-14 flex sm:w-24 w-16 font-black  text-2xl'>VELO  <span className='text-red-500'> CITI</span></h1>
+                            <UserLogo />
                         </Link>
                         <form onSubmit={submitHandler}>
                             <h3 className='text-md font-medium mb-2'>What&apos;s your name</h3>

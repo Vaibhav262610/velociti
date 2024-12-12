@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Start from './pages/Start'
 import UserLogin from './pages/UserLogin'
@@ -12,6 +12,8 @@ import UserLogOut from './pages/UserLogOut'
 import CaptainHome from './pages/CaptainHome'
 import CaptainLogOut from './pages/CaptainLogOut'
 import CaptainWrapperProtector from './pages/CaptainWrapperProtector'
+import Riding from './pages/Riding'
+import CaptainRiding from './components/CaptainRiding'
 
 const App = () => {
   return (
@@ -20,6 +22,8 @@ const App = () => {
         <Route path='/' element={<Start />} />
         <Route path='/login' element={<UserLogin />} />
         <Route path='/register' element={<UserRegister />} />
+        <Route path='/riding' element={<Riding />} />
+        <Route path='/captain-riding' element={<CaptainRiding />} />
         <Route path='/captain-login' element={<CaptainLogin />} />
         <Route path='/captain-register' element={<CaptainRegister />} />
         <Route path='*' element={<Error />} />

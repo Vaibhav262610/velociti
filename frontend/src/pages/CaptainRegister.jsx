@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { CaptainDataContext } from '../context/CaptainContext'
 import axios from 'axios'
+import CaptainLogo from '../components/CaptainLogo'
 
 const CaptainRegister = () => {
 
@@ -61,7 +62,7 @@ const CaptainRegister = () => {
                 <div className='p-7 w-full bg-gray-100 sm:rounded-lg sm:p-20 sm:w-4/12 flex flex-col sm:h-auto h-screen sm:gap-20 justify-between '>
                     <div>
                         <Link to={'/'}>
-                            <h1 className='mb-10 flex sm:w-24 w-16 font-black text-green-500 text-2xl'>VELO  <span className='text-black'> CITI</span></h1>
+                            <CaptainLogo />
                         </Link>
                         <form onSubmit={submitHandler}>
                             <h3 className='text-md font-medium mb-2'>What&apos;s our captain&apos;s name</h3>
