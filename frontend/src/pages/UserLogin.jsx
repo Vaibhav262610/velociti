@@ -1,5 +1,7 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { UserDataContext } from '../context/UserContext'
+import axios from 'axios'
 
 const UserLogin = () => {
 
@@ -8,13 +10,29 @@ const UserLogin = () => {
     const [userData, setUserData] = useState({})
 
 
+    const navigate = useNavigate()
+    const [user, setUser] = useContext(UserDataContext)
 
-    const submitHandler = (e) => {
+
+
+    const submitHandler = async (e) => {
         e.preventDefault()
-        setUserData({
+        const userData = {
             email: email,
-            password: pass
-        })
+            password: pass,
+        }
+
+
+        const response = await axios.post(`http://localhost:4000/users/login`, userData)
+
+        if (response.status === 201) {
+            const data = response.data
+            localStorage.setItem('token', data.token)
+            setUser(data.user)
+            navigate("/home")
+        }
+
+
         console.log(email, pass);
 
         console.log(userData);
@@ -25,7 +43,7 @@ const UserLogin = () => {
     return (
         <>
             <div className=' flex bg-[url(https://plus.unsplash.com/premium_vector-1726060273712-1f98b2ebdaff?q=80&w=2056&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)] bg-cover justify-center items-center w-full h-screen'>
-                <div className=' p-7 w-full  bg-red-100 sm:bg-gray-100 sm:rounded-lg sm:p-20 sm:w-4/12 flex flex-col sm:h-auto h-screen sm:gap-20 justify-between '>
+                <div className=' p-7 w-full  bg-gray-100 sm:rounded-lg sm:p-20 sm:w-4/12 flex flex-col sm:h-auto h-screen sm:gap-20 justify-between '>
                     <div>
                         <Link to={'/'}>
                             <h1 className='mb-14 flex sm:w-24 w-16 font-black  text-2xl'>VELO  <span className='text-red-500'> CITI</span></h1>
