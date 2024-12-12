@@ -2,6 +2,7 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import React, { useRef, useState } from 'react'
 import { RiArrowDownSLine } from "react-icons/ri";
+import LocationSearchPanel from '../components/LocationSearchPanel';
 
 const Home = () => {
 
@@ -19,7 +20,8 @@ const Home = () => {
     useGSAP(() => {
         if (panelOpen) {
             gsap.to(panelRef.current, {
-                height: '70vh'
+                height: '70vh',
+                // padding: 24,
             })
             gsap.to(panelCloseRef.current, {
                 opacity: 1,
@@ -58,8 +60,13 @@ const Home = () => {
                             <input value={destination} onClick={() => setPanelOpen(true)} onChange={(e) => setDestination(e.target.value)} className='mb-3 bg-[#eeeeee] px-12 py-3 text-sm rounded-lg outline-none w-full ' type="text" placeholder='Enter your destination' />
                         </form>
                     </div>
-                    <div ref={panelRef} className='h-[0vh] bg-red-500 '>
+                    <div ref={panelRef} className='h-[0vh] bg-white '>
+                        <LocationSearchPanel />
+                    </div>
+                    <div className='fixed z-10'>
+                        <div>
 
+                        </div>
                     </div>
                 </div>
             </div>
