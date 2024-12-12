@@ -39,7 +39,7 @@ const Home = () => {
 
     return (
         <>
-            <div className='h-screen relative '>
+            <div className='h-screen relative overflow-hidden'>
                 <div>
                     <h1 className='left-5 top-5 absolute flex sm:w-24 w-16 font-black text-2xl'>VELO <span className='text-red-500'>CITI</span></h1>
                 </div>
@@ -63,9 +63,20 @@ const Home = () => {
                     <div ref={panelRef} className='h-[0vh] bg-white '>
                         <LocationSearchPanel />
                     </div>
-                    <div className='fixed z-10'>
-                        <div>
-
+                    <div className='fixed z-10 bg-gray-400 w-full bottom-0 p-3'>
+                        <div className='flex justify-center border-2 border-black rounded-xl gap-4 items-center bg-white'>
+                            <div>
+                                <img src="https://www.svgrepo.com/download/408291/car-white.svg" className='h-20' alt="" />
+                            </div>
+                            <div>
+                                <h1 className='font-bold text-base'>VelocitiGo</h1>
+                                <h2 className='text-xs'>2 mins away</h2>
+                                {/* <h3 className='text-xs'>14:44</h3> */}
+                                <h2 className='text-gray-500 text-xs'>Affordable, compact rides</h2>
+                            </div>
+                            <div>
+                                <h1 className='text-xl font-bold'>$193.20</h1>
+                            </div>
                         </div>
                     </div>
                 </div>
