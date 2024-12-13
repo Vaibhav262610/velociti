@@ -2,9 +2,20 @@
 import { BiCurrentLocation } from "react-icons/bi";
 import { IoLocation } from "react-icons/io5";
 import { FaMoneyBillWave } from "react-icons/fa";
+import { RiPinDistanceFill } from "react-icons/ri";
+import { UserDataContext } from "../context/UserContext";
+import { useContext } from "react";
 
 
 const ConfirmedRide = (props) => {
+
+
+    const { selectedLocation } = useContext(UserDataContext);
+
+    if (!selectedLocation) {
+        return <div>No location selected</div>; // Show message if no location is selected
+    }
+
     return (
         <>
             <div>
@@ -17,10 +28,10 @@ const ConfirmedRide = (props) => {
                         <BiCurrentLocation className='text-2xl' />
                         <div className='flex flex-col'>
                             <h2 className='text-md font-medium'>
-                                562/11-A
+                                {selectedLocation.current_location}
                             </h2>
                             <h3 className='text-sm font-medium'>
-                                Tilhar,Shahjahanpur
+                                Current location
                             </h3>
                         </div>
                     </div>
@@ -28,28 +39,28 @@ const ConfirmedRide = (props) => {
                         <IoLocation className='text-2xl' />
                         <div className='flex flex-col'>
                             <h2 className='text-md font-medium'>
-                                562/11-A
+                                {selectedLocation.destination}
                             </h2>
                             <h3 className='text-sm font-medium'>
-                                Tilhar,Shahjahanpur
+                                Destination
                             </h3>
                         </div>
                     </div>
                     <div className='flex items-center p-3  gap-4'>
-                        <FaMoneyBillWave className='text-2xl' />
+                        <RiPinDistanceFill className='text-2xl' />
                         <div className='flex flex-col'>
                             <h2 className='text-md font-medium'>
-                                $234.23
+                                {selectedLocation.distance} KM
                             </h2>
                             <h3 className='text-sm font-medium'>
-                                Cash cash
+                                distance
                             </h3>
                         </div>
                     </div>
                     <button onClick={() => {
                         props.setVehicleFound(true)
                         props.setConfirmedRide(false)
-                    }} className='mt-4 bg-green-400 w-full py-3 font-semibold rounded-md '>Confirm</button>
+                    }} className='mt-4 bg-green-400 w-full py-3 active:bg-black active:text-white duration-200 font-semibold rounded-md '>Confirm</button>
                 </div>
             </div>
         </>

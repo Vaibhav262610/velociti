@@ -4,6 +4,7 @@ import { IoLocation } from "react-icons/io5";
 import { FaMoneyBillWave } from "react-icons/fa";
 import { GoHome } from "react-icons/go";
 import { Link } from "react-router-dom";
+import Map from "../components/Map";
 
 
 const Riding = () => {
@@ -12,16 +13,16 @@ const Riding = () => {
             <div className="h-screen w-full relative overflow-hidden">
                 <div>
                     <Link to="/home">
-                        <div className="fixed bg-white p-2 rounded-full right-2 top-2">
+                        <div className="fixed z-40 bg-white p-2 rounded-full right-2 top-2">
                             <GoHome className="text-2xl" />
                         </div>
                     </Link>
                     {/* <h1 className='font-bold text-2xl '>Confirm your Ride</h1> */}
-                    <div className='w-full flex justify-center items-center'>
-                        <img src="https://newsroomadmin.uberinternal.com/wp-content/uploads/2021/06/Product-Selector-MVP.png" className='h-screen w-screen object-cover' alt="" />
+                    <div className="absolute inset-0 top-[-10rem] z-10 ">
+                        <Map />
                     </div>
                     <div className="">
-                        <div className='p-5 flex flex-col justify-end absolute bottom-0 w-full bg-white'>
+                        <div className='p-5 border-t-2 border-gray-400 flex flex-col z-30 justify-end absolute bottom-0 w-full bg-white'>
                             <div className="flex justify-between">
                                 <div>
                                     <img src="https://www.svgrepo.com/download/408291/car-white.svg" className='h-24' alt="" />
@@ -55,7 +56,7 @@ const Riding = () => {
                                     </h3>
                                 </div>
                             </div>
-                            <button className='mt-4 bg-green-400 w-full py-3 font-semibold rounded-md '>Make a Payment</button>
+                            <button className='mt-4 active:bg-black active:text-white duration-200 bg-green-400 w-full py-3 font-semibold rounded-md '>Make a Payment</button>
                         </div>
                     </div >
                 </div>

@@ -1,12 +1,20 @@
 import { RiArrowDownSLine } from 'react-icons/ri'
+import { UserDataContext } from '../context/UserContext';
+import { useContext } from 'react';
+import { vehicleData } from "../data/vehicleData.json"
 
 const VehiclePanel = (props) => {
+
+    const { selectedLocation } = useContext(UserDataContext);
+
+
+
     return (
         <div>
             <div className='flex justify-between'>
                 <h3 className='text-2xl mb-4 font-semibold'>Choose a Vehicle</h3>
                 {/* </div> */}
-                <RiArrowDownSLine ref={props.panelCloseRef} onClick={() => props.setVehiclePanel(false)} className='text-3xl  font-black' />
+                <RiArrowDownSLine onClick={() => props.setVehiclePanel(false)} className='text-3xl  font-black' />
             </div>
             <div onClick={() => props.setConfirmedRide(true)} className='flex justify-center mb-2 border-2 active:border-black rounded-xl gap-4 items-center bg-white'>
                 <div>

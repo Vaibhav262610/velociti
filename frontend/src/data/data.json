@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "current_location": "New Delhi, India",
+    "destination": "Mumbai, India",
+    "distance": 1400,
+    "time": "18h"
+  },
+  {
+    "id": 2,
+    "current_location": "Bangalore, India",
+    "destination": "Chennai, India",
+    "distance": 350,
+    "time": "5h"
+  },
+  {
+    "id": 3,
+    "current_location": "Kolkata, India",
+    "destination": "Hyderabad, India",
+    "distance": 1300,
+    "time": "18h"
+  },
+  {
+    "id": 4,
+    "current_location": "Ahmedabad, India",
+    "destination": "Surat, India",
+    "distance": 270,
+    "time": "4h"
+  },
+  {
+    "id": 5,
+    "current_location": "Jaipur, India",
+    "destination": "Udaipur, India",
+    "distance": 390,
+    "time": "6h"
+  },
+  {
+    "id": 6,
+    "current_location": "Pune, India",
+    "destination": "Nagpur, India",
+    "distance": 700,
+    "time": "10h"
+  },
+  {
+    "id": 7,
+    "current_location": "Chandigarh, India",
+    "destination": "Shimla, India",
+    "distance": 115,
+    "time": "3h"
+  },
+  {
+    "id": 8,
+    "current_location": "Lucknow, India",
+    "destination": "Varanasi, India",
+    "distance": 300,
+    "time": "6h"
+  },
+  {
+    "id": 9,
+    "current_location": "Goa, India",
+    "destination": "Mangalore, India",
+    "distance": 360,
+    "time": "6h"
+  },
+  {
+    "id": 10,
+    "current_location": "Kochi, India",
+    "destination": "Thiruvananthapuram, India",
+    "distance": 200,
+    "time": "4h"
+  }
+]

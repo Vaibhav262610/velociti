@@ -1,9 +1,23 @@
 // import React from 'react'
 import { BiCurrentLocation } from "react-icons/bi";
 import { IoLocation } from "react-icons/io5";
+import { RiPinDistanceFill } from "react-icons/ri";
 import { FaMoneyBillWave } from "react-icons/fa";
+import { UserDataContext } from "../context/UserContext";
+import { useContext } from "react";
 
 const LookingForDriver = () => {
+
+    const { selectedLocation } = useContext(UserDataContext);
+    if (!selectedLocation) {
+        return <div>Loading or No Location Selected</div>; // Show a loading message or fallback content
+    }
+
+    const km = 27
+    // console.log(selectedLocation.distance * km);
+
+
+
     return (
         <>
             <div>
@@ -16,21 +30,21 @@ const LookingForDriver = () => {
                         <BiCurrentLocation className='text-2xl' />
                         <div className='flex flex-col'>
                             <h2 className='text-md font-medium'>
-                                562/11-A
+                                {selectedLocation.destination}
                             </h2>
                             <h3 className='text-sm font-medium'>
-                                Tilhar,Shahjahanpur
+                                Destination
                             </h3>
                         </div>
                     </div>
                     <div className='flex items-center p-3 border-b-gray-200 border-b-2  gap-4'>
-                        <IoLocation className='text-2xl' />
+                        <RiPinDistanceFill className='text-2xl' />
                         <div className='flex flex-col'>
                             <h2 className='text-md font-medium'>
-                                562/11-A
+                                {selectedLocation.distance} KM
                             </h2>
                             <h3 className='text-sm font-medium'>
-                                Tilhar,Shahjahanpur
+                                distance
                             </h3>
                         </div>
                     </div>
@@ -38,7 +52,7 @@ const LookingForDriver = () => {
                         <FaMoneyBillWave className='text-2xl' />
                         <div className='flex flex-col'>
                             <h2 className='text-md font-medium'>
-                                $234.23
+                                ₹{selectedLocation.distance * km}
                             </h2>
                             <h3 className='text-sm font-medium'>
                                 Cash cash
