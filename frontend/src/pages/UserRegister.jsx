@@ -13,7 +13,7 @@ const UserRegister = () => {
     const [username, setUsername] = useState("")
     const [userData, setUserData] = useState({})
 
-    const [user, setUser] = React.useContext(UserDataContext)
+    const { user, setUser } = React.useContext(UserDataContext)
 
 
     const submitHandler = async (e) => {

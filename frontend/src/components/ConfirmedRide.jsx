@@ -5,12 +5,56 @@ import { FaMoneyBillWave } from "react-icons/fa";
 import { RiPinDistanceFill } from "react-icons/ri";
 import { UserDataContext } from "../context/UserContext";
 import { useContext } from "react";
+import { useState } from "react";
+import { useEffect } from "react";
+import axios from "axios";
 
 
 const ConfirmedRide = (props) => {
 
 
+    const { profile, setProfile } = useContext(UserDataContext);
+    const [error, setError] = useState("")
+    const fetchProfile = async () => {
+        try {
+            const token = localStorage.getItem("token"); // Retrieve token from localStorage
+
+            if (!token) {
+                setError("No token found. Please log in.");
+                return;
+            }
+
+            const response = await axios.get("http://localhost:4000/users/profile", {
+                headers: {
+                    Authorization: `Bearer ${token}`, // Send token in Authorization header
+                },
+            });
+
+            setProfile(response.data); // Store the profile data
+
+        } catch (err) {
+            console.error(err);
+            setError("Failed to fetch profile. Please try again.");
+        }
+    };
+
+    // console.log(profile);
+
+
+    useEffect(() => {
+        fetchProfile();
+    }, []);
+
+
+
+    const { selectedRide } = useContext(UserDataContext);
     const { selectedLocation } = useContext(UserDataContext);
+
+    if (!selectedRide) {
+        return <div>No location selected</div>; // Show message if no location is selected
+    }
+
+
 
     if (!selectedLocation) {
         return <div>No location selected</div>; // Show message if no location is selected
@@ -21,7 +65,7 @@ const ConfirmedRide = (props) => {
             <div>
                 <h1 className='font-bold text-2xl '>Confirm your Ride</h1>
                 <div className='w-full flex justify-center items-center'>
-                    <img src="https://www.svgrepo.com/download/408291/car-white.svg" className='h-40' alt="" />
+                    <img src={selectedRide.img} className='h-40' alt="" />
                 </div>
                 <div>
                     <div className='flex items-center p-3 border-b-gray-200 border-b-2  gap-4'>

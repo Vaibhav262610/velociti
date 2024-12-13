@@ -1,7 +1,7 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { MdLogout } from "react-icons/md";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+// import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import CaptainLogo from "../components/CaptainLogo";
 import RidePopUp from "../components/RidePopUp";
@@ -9,8 +9,13 @@ import ConfirmRidePopUp from "../components/ConfirmRidePopUp";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Map from "../components/Map";
+import { CaptainDataContext } from "../context/CaptainContext"
 
 const CaptainHome = () => {
+
+    const { captain } = useContext(CaptainDataContext)
+
+
     const [popupPanel, setPopupPanel] = useState(true);
     const [confirmPopupPanel, setConfirmPopupPanel] = useState(false);
     const popupPanelRef = useRef();
@@ -66,7 +71,7 @@ const CaptainHome = () => {
                             className="h-16 rounded-full"
                             alt=""
                         />
-                        <h1 className="text-lg font-semibold">Captain Patel</h1>
+                        <h1 className="text-lg font-semibold capitalize">{captain.username}</h1>
                     </div>
                     <div className="flex flex-col items-end justify-center">
                         <h1 className="font-bold text-2xl">$295.21</h1>

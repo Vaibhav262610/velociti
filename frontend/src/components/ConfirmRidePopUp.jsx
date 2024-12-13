@@ -2,12 +2,14 @@ import { BiCurrentLocation } from "react-icons/bi";
 import { IoLocation } from "react-icons/io5";
 import { FaMoneyBillWave } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { UserDataContext } from "../context/UserContext";
 // import { RiArrowDownSLine } from 're
 
 
 const ConfirmRidePopUp = (props) => {
     const [otp, setOtp] = useState('')
+
 
 
     const submitHandler = (e) => {

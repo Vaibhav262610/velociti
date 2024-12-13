@@ -3,8 +3,13 @@ import { BiCurrentLocation } from "react-icons/bi";
 import { IoLocation } from "react-icons/io5";
 import { FaMoneyBillWave } from "react-icons/fa";
 import { RiArrowDownSLine } from 'react-icons/ri'
+import { useContext } from "react";
+import { UserDataContext } from "../context/UserContext";
 
 const RidePopUp = (props) => {
+
+
+    // const { profile, selectedLocation } = useContext(UserDataContext)
     return (
         <div>
             <div className='flex justify-between'>
