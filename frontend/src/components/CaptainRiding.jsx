@@ -18,7 +18,7 @@ const CaptainRiding = () => {
             });
         } else {
             gsap.to(finishRidingPanelRef.current, {
-                transform: "translateY(100vh)",
+                transform: "translateY(0vh)",
             });
         }
     }, [finishRidingPanel]);

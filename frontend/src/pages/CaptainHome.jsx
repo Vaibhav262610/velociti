@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { MdLogout } from "react-icons/md";
 // import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
@@ -10,18 +10,26 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Map from "../components/Map";
 import { CaptainDataContext } from "../context/CaptainContext"
+import { UserDataContext } from "../context/UserContext";
 
 const CaptainHome = () => {
 
     const { captain } = useContext(CaptainDataContext)
+    const request = localStorage.getItem('request')
+    console.log(request);
 
+    var newRequest = false
+    if (request) {
+        newRequest = true
+        console.log("Request is true", newRequest);
+    } else {
+        console.log("Request is false");
+    }
 
-    const [popupPanel, setPopupPanel] = useState(true);
+    const [popupPanel, setPopupPanel] = useState(newRequest);
     const [confirmPopupPanel, setConfirmPopupPanel] = useState(false);
     const popupPanelRef = useRef();
     const confirmPopupPanelRef = useRef();
-
-    const userPosition = [51.505, -0.09]; // Replace with dynamic user position if available
 
     useGSAP(() => {
         if (popupPanel) {

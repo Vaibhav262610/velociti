@@ -22,8 +22,24 @@ const userSchema = new mongoose.Schema({
     },
     socketId: {
         type: String,
+    },
+    rideRequest: {
+        type: Boolean,
+        default: false,
     }
 })
+
+userSchema.methods.toggleRideRequest = async function () {
+    try {
+        this.rideRequest = !this.rideRequest; // Toggle the rideRequest value
+        await this.save(); // Save the updated user document
+        return this; // Return the updated user
+    } catch (error) {
+        console.log("ERROR WHILE TOGGLING RIDE REQUEST");
+        throw error;
+    }
+}
+
 
 userSchema.methods.generateAuthToken = function () {
     try {

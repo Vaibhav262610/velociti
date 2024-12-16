@@ -30,6 +30,7 @@ const UserLogin = () => {
             const data = response.data
             localStorage.setItem('token', data.token)
             setUser(data.user)
+            // console.log(data);
             navigate("/home")
         }
 

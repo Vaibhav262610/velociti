@@ -9,12 +9,12 @@ const UserContext = ({ children }) => {
     });
     const [selectedLocation, setSelectedLocation] = useState(null);
     const [selectedRide, setSelectedRide] = useState(null);
-    const [profile, setProfile] = useState(null)
+    const [request, setRequest] = useState(false)
 
 
 
     return (
-        <UserDataContext.Provider value={{ user, setUser, selectedLocation, setSelectedLocation, selectedRide, setSelectedRide, profile, setProfile }}>
+        <UserDataContext.Provider value={{ user, setUser, selectedLocation, setSelectedLocation, selectedRide, setSelectedRide, request, setRequest }}>
             {children}
         </UserDataContext.Provider>
     );

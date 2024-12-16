@@ -34,7 +34,7 @@ const VehiclePanel = (props) => {
                 vehicle.map((elem, index) => {
                     return (
                         <>
-                            <div>
+                            <div key={index}>
                                 <div onClick={() => {
                                     props.setConfirmedRide(true)
                                     rideHandler(elem)

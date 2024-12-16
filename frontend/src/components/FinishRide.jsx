@@ -4,6 +4,7 @@ import { FaMoneyBillWave } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const FinishRide = () => {
+
     return (
         <div className="">
             <div className='flex justify-between pt-12'>
@@ -53,7 +54,7 @@ const FinishRide = () => {
                     </div>
                     <div className="my-4">
 
-                        <Link to='/captain-home' className='mt-4 flex justify-center bg-green-400 w-full py-3 font-semibold rounded-md '>Finish this ride</Link>
+                        <Link onClick={() => requestHandler()} to='/captain-home' className='mt-4 flex justify-center bg-green-400 w-full py-3 font-semibold rounded-md '>Finish this ride</Link>
 
 
                     </div>

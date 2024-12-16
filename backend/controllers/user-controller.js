@@ -71,4 +71,9 @@ const getUserProfile = async (req, res, next) => {
 }
 
 
-module.exports = { registerUser, loginUser, getUserProfile, logoutUser }
+const getRideRequest = async (req, res, next) => {
+    res.status(200).json(req.user)
+}
+
+
+module.exports = { registerUser, loginUser, getUserProfile, logoutUser, getRideRequest }

@@ -11,41 +11,15 @@ import axios from "axios";
 
 
 const ConfirmedRide = (props) => {
+    const { request, setRequest } = useContext(UserDataContext)
 
 
-    const { profile, setProfile } = useContext(UserDataContext);
-    const [error, setError] = useState("")
-    const fetchProfile = async () => {
-        try {
-            const token = localStorage.getItem("token"); // Retrieve token from localStorage
-
-            if (!token) {
-                setError("No token found. Please log in.");
-                return;
-            }
-
-            const response = await axios.get("http://localhost:4000/users/profile", {
-                headers: {
-                    Authorization: `Bearer ${token}`, // Send token in Authorization header
-                },
-            });
-
-            setProfile(response.data); // Store the profile data
-
-        } catch (err) {
-            console.error(err);
-            setError("Failed to fetch profile. Please try again.");
-        }
-    };
-
-    // console.log(profile);
-
-
-    useEffect(() => {
-        fetchProfile();
-    }, []);
-
-
+    const requestHandler = () => {
+        const newData = !request;
+        setRequest(newData);
+        localStorage.setItem("request", newData);
+        console.log("Value has been stored:", newData);
+    }
 
     const { selectedRide } = useContext(UserDataContext);
     const { selectedLocation } = useContext(UserDataContext);
@@ -53,8 +27,6 @@ const ConfirmedRide = (props) => {
     if (!selectedRide) {
         return <div>No location selected</div>; // Show message if no location is selected
     }
-
-
 
     if (!selectedLocation) {
         return <div>No location selected</div>; // Show message if no location is selected
@@ -104,6 +76,7 @@ const ConfirmedRide = (props) => {
                     <button onClick={() => {
                         props.setVehicleFound(true)
                         props.setConfirmedRide(false)
+                        requestHandler()
                     }} className='mt-4 bg-green-400 w-full py-3 active:bg-black active:text-white duration-200 font-semibold rounded-md '>Confirm</button>
                 </div>
             </div>
