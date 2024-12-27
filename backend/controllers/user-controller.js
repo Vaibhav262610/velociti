@@ -67,13 +67,20 @@ const logoutUser = async (req, res, next) => {
 }
 
 const getUserProfile = async (req, res, next) => {
-    res.status(200).json(req.user)
+    try {
+        res.status(200).json(req.user)
+    } catch (error) {
+        res.status(401).json({ msg: "DATA NOT FOUND" })
+    }
 }
 
 
-const getRideRequest = async (req, res, next) => {
-    res.status(200).json(req.user)
+const updateRideRequest = async (req, res, next) => {
+    const newRideRequest = true
+
+    userModel.findByIdAndUpdate({ rideRequest: newRideRequest }, { rideRequest: req.body.rideRequest })
+        .then(users => res.json(users))
+        .catch(err => res.json(err))
 }
 
-
-module.exports = { registerUser, loginUser, getUserProfile, logoutUser, getRideRequest }
+module.exports = { registerUser, loginUser, getUserProfile, logoutUser, updateRideRequest }

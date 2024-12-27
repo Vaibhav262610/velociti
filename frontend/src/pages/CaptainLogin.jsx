@@ -9,10 +9,9 @@ const CaptainLogin = () => {
     const [pass, setPass] = useState('');
     const navigate = useNavigate();
 
-    // Using useContext correctly
     // const [captain, setCaptain] = useContext(CaptainDataContext);  // Destructure the context value
 
-    const { captain, setCaptain } = React.useContext(CaptainDataContext)
+    const { setCaptain } = React.useContext(CaptainDataContext)
 
     // const context = useContext(CaptainDataContext);
     // console.log(context); // This should log something like [captain, setCaptain]

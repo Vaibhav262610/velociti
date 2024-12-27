@@ -11,19 +11,52 @@ import axios from "axios";
 
 
 const ConfirmedRide = (props) => {
-    const { request, setRequest } = useContext(UserDataContext)
-
-
-    const requestHandler = () => {
-        const newData = !request;
-        setRequest(newData);
-        localStorage.setItem("request", newData);
-        console.log("Value has been stored:", newData);
-    }
-
+    // const { request, setRequest } = useContext(UserDataContext)
     const { selectedRide } = useContext(UserDataContext);
+    const updatedRideRequest = true
     const { selectedLocation } = useContext(UserDataContext);
 
+    const token = localStorage.getItem("token")
+
+    useEffect(() => {
+        axios
+            .get("http://localhost:4000/users/profile", {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+            .then((response) => {
+                if (response.status === 200) {
+                    // setRideRequest(response.data.rideRequest);
+                    // setRideRequest(response.data.rideRequest)
+                    console.log("User Data:", response.data.rideRequest);
+                }
+            })
+            .catch((err) => {
+                console.error("Error fetching user data:", err.response || err.message);
+            });
+    }); // Empty array ensures this runs only on mount
+
+
+    const requestHandler = (e) => {
+        e.preventDefault();
+        axios
+            .put(
+                "http://localhost:4000/users/update",
+                { updatedRideRequest },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`, // Include the token for authorization
+                    },
+                }
+            )
+            .then(result => {
+                console.log("User updated successfully:", result.data);
+            })
+            .catch(err => {
+                console.error("Error updating user:", err);
+            });
+    };
     if (!selectedRide) {
         return <div>No location selected</div>; // Show message if no location is selected
     }
@@ -73,10 +106,11 @@ const ConfirmedRide = (props) => {
                             </h3>
                         </div>
                     </div>
-                    <button onClick={() => {
+                    <button onClick={(e) => {
+                        // e.preventDefault();
                         props.setVehicleFound(true)
                         props.setConfirmedRide(false)
-                        requestHandler()
+                        requestHandler(e)
                     }} className='mt-4 bg-green-400 w-full py-3 active:bg-black active:text-white duration-200 font-semibold rounded-md '>Confirm</button>
                 </div>
             </div>

@@ -7,7 +7,7 @@ import CaptainLogo from '../components/CaptainLogo'
 const CaptainRegister = () => {
 
 
-    const { captain, setCaptain } = React.useContext(CaptainDataContext)
+    const { setCaptain } = React.useContext(CaptainDataContext)
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [username, setUsername] = useState("")
@@ -16,7 +16,7 @@ const CaptainRegister = () => {
     const [capacity, setCapacity] = useState("")
     const [vehicleType, setVehicleType] = useState("")
     const navigate = useNavigate()
-    const [userData, setUserData] = useState({})
+    // const [userData, setUserData] = useState({})
 
     const submitHandler = async (e) => {
         e.preventDefault();

@@ -2,7 +2,7 @@ import { RiArrowDownSLine } from 'react-icons/ri'
 import { UserDataContext } from '../context/UserContext';
 import { useContext } from 'react';
 import vehicle from "../data/vehicle.json"
-import locationData from "../data/data.json"
+// import locationData from "../data/data.json"
 
 const VehiclePanel = (props) => {
 
@@ -33,29 +33,28 @@ const VehiclePanel = (props) => {
             {
                 vehicle.map((elem, index) => {
                     return (
-                        <>
-                            <div key={index}>
-                                <div onClick={() => {
-                                    props.setConfirmedRide(true)
-                                    rideHandler(elem)
-                                    console.log(elem.id);
 
-                                }} className='flex justify-center mb-2 border-2 active:border-black rounded-xl gap-4 py-3 items-center bg-white'>
-                                    <div>
-                                        <img src={elem.img} className='h-16' alt="" />
-                                    </div>
-                                    <div>
-                                        <h1 className='font-bold text-base'>{elem.type}</h1>
-                                        <h2 className='text-xs'>{elem.time}</h2>
-                                        {/* <h3 className='text-xs'>14:44</h3> */}
-                                        <h2 className='text-gray-500 text-xs'>{elem.desc}</h2>
-                                    </div>
-                                    <div>
-                                        <h1 className='text-xl font-bold'>₹{selectedLocation.distance * elem.price}</h1>
-                                    </div>
+                        <div key={index}>
+                            <div onClick={() => {
+                                props.setConfirmedRide(true)
+                                rideHandler(elem)
+                                console.log(elem.id);
+
+                            }} className='flex justify-center mb-2 border-2 active:border-black rounded-xl gap-4 py-3 items-center bg-white'>
+                                <div>
+                                    <img src={elem.img} className='h-16' alt="" />
+                                </div>
+                                <div>
+                                    <h1 className='font-bold text-base'>{elem.type}</h1>
+                                    <h2 className='text-xs'>{elem.time}</h2>
+                                    {/* <h3 className='text-xs'>14:44</h3> */}
+                                    <h2 className='text-gray-500 text-xs'>{elem.desc}</h2>
+                                </div>
+                                <div>
+                                    <h1 className='text-xl font-bold'>₹{selectedLocation.distance * elem.price}</h1>
                                 </div>
                             </div>
-                        </>
+                        </div>
                     )
                 })
             }

@@ -1,6 +1,7 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
+import { useNavigate } from 'react-router-dom'
 import { RiArrowDownSLine } from "react-icons/ri";
 import LocationSearchPanel from "../components/LocationSearchPanel";
 import VehiclePanel from "../components/VehiclePanel";
@@ -8,6 +9,9 @@ import ConfirmedRide from "../components/ConfirmedRide";
 import LookingForDriver from "../components/LookingForDriver";
 import WaitingForDriver from "../components/WaitingForDriver";
 import Map from "../components/Map"; // Importing the Map component
+import { UserDataContext } from "../context/UserContext";
+import axios from "axios";
+// import { useNavigate } from "react-router-dom";
 
 const Home = () => {
     const [pickUp, setPickUp] = useState("");
@@ -15,7 +19,7 @@ const Home = () => {
     const [panelOpen, setPanelOpen] = useState(false);
     const [vehiclePanel, setVehiclePanel] = useState(false);
     const [confirmedRide, setConfirmedRide] = useState(false);
-    const [waiting, setWaiting] = useState(false);
+    const [waiting] = useState(false);
     const [vehicleFound, setVehicleFound] = useState(false);
 
 
@@ -29,7 +33,10 @@ const Home = () => {
     const submitHandler = (e) => {
         e.preventDefault();
         // Submission logic
+
+        // const navigate = useNavigate()
     };
+
 
     useGSAP(() => {
         if (panelOpen) {

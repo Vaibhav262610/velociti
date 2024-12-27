@@ -15,18 +15,15 @@ import { UserDataContext } from "../context/UserContext";
 const CaptainHome = () => {
 
     const { captain } = useContext(CaptainDataContext)
-    const request = localStorage.getItem('request')
-    console.log(request);
+    const { rideRequest } = useContext(UserDataContext);
 
-    var newRequest = false
-    if (request) {
-        newRequest = true
-        console.log("Request is true", newRequest);
-    } else {
-        console.log("Request is false");
-    }
+    useEffect(() => {
+        if (rideRequest) {
+            console.log("Ride has been confirmed:", rideRequest);
+        }
+    }, [rideRequest]);
 
-    const [popupPanel, setPopupPanel] = useState(newRequest);
+    const [popupPanel, setPopupPanel] = useState(rideRequest);
     const [confirmPopupPanel, setConfirmPopupPanel] = useState(false);
     const popupPanelRef = useRef();
     const confirmPopupPanelRef = useRef();

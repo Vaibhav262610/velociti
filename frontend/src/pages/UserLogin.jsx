@@ -8,13 +8,8 @@ const UserLogin = () => {
 
     const [email, setEmail] = useState("")
     const [pass, setPass] = useState("")
-    const { user, setUser } = useContext(UserDataContext)
-    const [userData, setUserData] = useState({})
-
-
+    const { setUser, setRideRequest } = useContext(UserDataContext)
     const navigate = useNavigate()
-
-
 
     const submitHandler = async (e) => {
         e.preventDefault()
@@ -23,20 +18,17 @@ const UserLogin = () => {
             password: pass,
         }
 
-
         const response = await axios.post(`http://localhost:4000/users/login`, userData)
 
         if (response.status === 201) {
             const data = response.data
+            setRideRequest(data.user.rideRequest);
             localStorage.setItem('token', data.token)
+            // localStorage.setItem('_id', data._)
             setUser(data.user)
-            // console.log(data);
             navigate("/home")
         }
-
-
         console.log(email, pass);
-
         console.log(userData);
 
         setEmail("")
